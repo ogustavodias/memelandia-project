@@ -1,6 +1,6 @@
-CREATE TABLE tb_user (
-  id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS tb_user (
+  id BIGSERIAL PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   email VARCHAR(100) NOT NULL,
-  registerDate TIMESTAMP
+  register_date TIMESTAMP
 );
