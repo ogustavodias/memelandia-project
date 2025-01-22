@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.memelandia.user.models.User;
@@ -34,4 +35,15 @@ public class UserController {
     List<User> users = service.getUsers();
     return ResponseEntity.status(HttpStatus.OK).body(users);
   }
+
+  @GetMapping(params = "id")
+  public ResponseEntity<Boolean> existsById(@RequestParam @Valid Long id) {
+    Boolean exists = service.existsById(id);
+
+    if (exists)
+      return ResponseEntity.status(HttpStatus.OK).body(exists);
+
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exists);
+  }
+
 }

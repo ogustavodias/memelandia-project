@@ -28,4 +28,8 @@ public class UserService {
     if (repository.existsByEmail(email))
       throw new DataIntegrityViolationException("A user with this email already exists: " + email);
   }
+
+  public Boolean existsById(Long id) {
+    return repository.existsById(id);
+  }
 }
